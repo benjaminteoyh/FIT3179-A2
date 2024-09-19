@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 450,
+  "title": "Number of Bachelor holders in Australia (2023)",
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "../js/Aussie.topojson",
+        "format": {"type": "topojson", "feature": "AUS_2016_AUST"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "../Data/degreeHolders.csv"
+      },
+      "mark": {"type": "circle", "tooltip": {"content": "data"}},
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "size": {"value": 100}
+        
+      }
+    }
+  ]
+}
